@@ -1,0 +1,186 @@
+<<!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+ 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="topperContainer">
+
+      <div class="front">
+        <div class="leftSideContainer">
+          <div class="bg"></div>
+          <div class="dateContainer">
+            <span class="day">Sunday<span class="date" D>4 Jan 2020</span>
+            </span>
+            <i class="pin" data-feather="map-pin"></i>
+            <span class="location">London, UK</span>
+
+          </div>
+
+          <div class="LilInfoContainer">
+            <i class="WeatherIcon" data-feather="cloud"></i>
+               <span class="WeatherIcon" ><img id="wicon" style="height:100px"></span> 
+            <span class="MainDeg">29°</span>
+            <span class="Description">Scattered Clouds</span>
+          </div>
+        </div>
+        <div class="rightSideContainer">
+          <div class="moreInfoContainer">
+            <ul class="InfoList">
+
+              <li class="infoItem"><span>PRECIPITATION</span><span class="value">0%</span></li>
+              <li class="infoItem"><span>HUMIDITY</span><span class="value" id="humidity">34%</span></li>
+              <li class="infoItem"><span>WIND</span><span class="value" id="windSpeed">14km/h</span></li>
+              <li class="infoItem"><span>FEELS LIKE</span><span class="value" id="feelsLike">25°</span></li>
+              <li class="infoItem"><span>HIGHEST TEMP</span><span class="value" id="tempHigh">32°</span></li>
+              <li class="infoItem"><span>LOWEST TEMP</span><span class="value" id="tempMin">22°</span></li>
+            </ul>
+          </div>
+
+          <div class="forecastContainer">
+            <ul class="forecastDayList">
+              <li class="forecastDay">
+                <i data-feather="cloud-lightning"></i>
+                <div class="clear"></div>
+                <span class="forecastDay-Day">
+                  Mon
+                </span>
+                <div class="clear"></div>
+                <span class="forecastDay-Temp">
+                  36°
+                </span>
+                <div class="clear"></div>
+              </li>
+              <li class="forecastDay">
+                <i data-feather="cloud-off"></i>
+                <div class="clear"></div>
+                <span class="forecastDay-Day">
+                  Tue
+                </span>
+                <div class="clear"></div>
+                <span class="forecastDay-Temp">
+                  28°
+                </span>
+                <div class="clear"></div>
+              </li>
+
+              <li class="forecastDay">
+                <i data-feather="cloud-snow"></i>
+                <div class="clear"></div>
+                <span class="forecastDay-Day">
+                  Wed
+                </span>
+                <div class="clear"></div>
+                <span class="forecastDay-Temp">
+                  -4°
+                </span>
+                <div class="clear"></div>
+              </li>
+
+              <li class="forecastDay">
+                <i data-feather="cloud-rain"></i>
+                <div class="clear"></div>
+                <span class="forecastDay-Day">
+                  Thu
+                </span>
+                <div class="clear"></div>
+                <span class="forecastDay-Temp">
+                  32°
+                </span>
+                <div class="clear"></div>
+              </li>
+            </ul>
+          </div>
+          <div class="change-btn-container">
+            <button class="ChangeLocation" data-toggle="modal" data-target="#exampleModalCenter"><i class="pin"
+                data-feather="map-pin"></i>
+              Change Location </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="back">
+
+          <input type="text" class="input" placeholder="type city"></input>
+            
+        <div id="input_container">
+          <div class="in_C">
+            <span>Search</span>
+            <input id="cityInput" type="text" />
+          </div>
+          <button id="undo" class="doSearch"><i class="pin" data-feather="map-pin"></i>
+            Change Location </button>
+        </div>
+        <div class="recentSearches">
+          <span class="recentHr">Recent</span>
+          <ul class="recentList">
+            <li class="recentItem">Tabriz
+                   <i class="pin" data-feather="arrow-right"></i>
+            </li>
+            <li class="recentItem">London</li>
+            <li class="recentItem">Seattle</li>
+            <li class="recentItem">Amsterdam</li>
+            <li class="recentItem">tehran</li>
+
+
+          </ul>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="input">
+              <input type="text" placeholder="Enter the city" class="input_text">
+              <input type="submit" value="Submit" class="submit">
+            </div>
+          </div>
+        
+          <div class="container">
+            <div class="card">
+              <h1 class="name" id="name"></h1>
+              <p class="temp"></p>
+              <p class="clouds"></p>
+              <p class="desc"></p>
+            </div>
+          </div>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="submitBut">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+
+  </html>
