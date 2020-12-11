@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="actuators.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="login.js"></script>
+
+</head>
+
+<body style="color: white; margin-top: -1rem">
+    
+    <h5 style="color: rgb(119, 228, 213); text-align: center; text-decoration: underline">Actuators</h5>
+    <div style="margin-left: 1rem; margin-left: 20rem; margin-top: -2rem">
+        <span style="font-size: 15px">0 -off</span>
+        <span style="font-size: 15px">1 -on</span>
+    </div>
+    <div style="margin-left: -6rem">
+        <label style="margin-left: 3rem; margin-top: -6rem"> <span style="font-size: 22px">Water Valve:</span> <input
+                class="bubble" id="waterBubble" type="checkbox" name="dummy" value="off" onclick="Ready()"></label>
+
+        <label style="margin-left: 9rem; margin-top: -4.5rem"> <span style="font-size: 22px;">Light:</span> <input
+                class="bubble" id="lightBubble" type="checkbox" name="dummy" value="off"onclick="Ready()"></label>
+        <label style="margin-left: 15rem; margin-top:-4.5rem;"> <span style="font-size: 22px; margin-left: -2rem">FireExtinguisher:</span>
+            <input class="bubble" id="co2Bubble" type="checkbox" name="dummy" value="off"onclick="Ready()"></label>
+    </div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+<script>
+
+    console.log(localStorage.getItem('userEmail'))
+    $("#waterBubble").change(function () {
+        if ($(this).prop("checked") == true) {
+
+            console.log("on")
+        } else {
+
+            console.log("off")
+        }
+    });
+
+    $("#lightBubble").change(function () {
+        if ($(this).prop("checked") == true) {
+
+            console.log("on")
+        } else {
+
+            console.log("off")
+        }
+    });
+
+    $("#co2Bubble").change(function () {
+        if ($(this).prop("checked") == true) {
+
+            console.log("on")
+        } else {
+
+            console.log("off")
+        }
+    });
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyBTMQdySZWAU_NmqAqrhhoCOP-aqgLxXD8",
+        authDomain: "iotweather-206cf.firebaseapp.com",
+        projectId: "iotweather-206cf",
+        storageBucket: "iotweather-206cf.appspot.com",
+        messagingSenderId: "593826630200",
+        appId: "1:593826630200:web:54b81c950ed8b59bf6b4cd"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+
+    var bigOne = document.getElementById('bigOne');
+    var dbRef = firebase.database().ref().child('user');
+    var checkUser = localStorage.getItem('userEmail');
+
+
+    count = 0;
+    for (i = 0; i < checkUser.length; i++) {
+        if (checkUser[i] != '.') {
+            count = count + 1;
+        }
+        else {
+            count = count;
+        }
+    }
+
+    if (count == 0) {
+        name = checkUser.substring(0, checkUser.indexOf('@'));
+    }
+    else {
+        name = checkUser.substring(0, checkUser.indexOf('.'));
+    }
+
+    var FireState, LightState, WaterState;
+
+    function Ready() {
+        if ($("#co2Bubble").prop("checked") == true) {
+
+            FireState = 1
+        } else {
+            FireState = 0
+        }
+        if ($("#lightBubble").prop("checked") == true) {
+
+            LightState = 1
+        } else {
+            LightState = 0
+        }
+        if ($("#waterBubble").prop("checked") == true) {
+
+            WaterState = 1
+        } else {
+            WaterState = 0
+        }
+
+        firebase.database().ref('user/' + name + '/actuators/').set({
+            WaterValve: WaterState,
+            Light: LightState,
+            Fire: FireState,
+
+        });
+    }
+
+    Ready();
+    firebase.database().ref('user/' + name + '/actuators/').set({
+        WaterValve: WaterState,
+        Light: LightState,
+        Fire: FireState,
+
+    });
+
+</script>
+
+</html>

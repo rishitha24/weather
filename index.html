@@ -1,186 +1,357 @@
-<<!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html>
 
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
- 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <script src="login.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta name="google-signin-client_id" content="844428656148-oj1gq3e78q5er4itv2qgikq3i0uou7ju.apps.googleusercontent.com">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+</head>
 
-  <body>
-    <div class="topperContainer">
+<body>
 
-      <div class="front">
-        <div class="leftSideContainer">
-          <div class="bg"></div>
-          <div class="dateContainer">
-            <span class="day">Sunday<span class="date" D>4 Jan 2020</span>
-            </span>
-            <i class="pin" data-feather="map-pin"></i>
-            <span class="location">London, UK</span>
+  <div class="topperContainer">
 
-          </div>
+    <div class="front">
+      <div class="leftSideContainer">
+        <div class="bg"></div>
+        <div class="dateContainer">
+          <span class="day">Sunday<span class="date" D>4 Jan 2020</span>
+          </span>
+          <i class="pin" data-feather="map-pin"></i>
+          <span class="location">London, UK</span>
+          <br>
+          <span id="email">john@gmail.com </span>
 
-          <div class="LilInfoContainer">
-            <i class="WeatherIcon" data-feather="cloud"></i>
-               <span class="WeatherIcon" ><img id="wicon" style="height:100px"></span> 
-            <span class="MainDeg">29°</span>
-            <span class="Description">Scattered Clouds</span>
-          </div>
         </div>
-        <div class="rightSideContainer">
-          <div class="moreInfoContainer">
-            <ul class="InfoList">
 
-              <li class="infoItem"><span>PRECIPITATION</span><span class="value">0%</span></li>
-              <li class="infoItem"><span>HUMIDITY</span><span class="value" id="humidity">34%</span></li>
-              <li class="infoItem"><span>WIND</span><span class="value" id="windSpeed">14km/h</span></li>
-              <li class="infoItem"><span>FEELS LIKE</span><span class="value" id="feelsLike">25°</span></li>
-              <li class="infoItem"><span>HIGHEST TEMP</span><span class="value" id="tempHigh">32°</span></li>
-              <li class="infoItem"><span>LOWEST TEMP</span><span class="value" id="tempMin">22°</span></li>
-            </ul>
-          </div>
-
-          <div class="forecastContainer">
-            <ul class="forecastDayList">
-              <li class="forecastDay">
-                <i data-feather="cloud-lightning"></i>
-                <div class="clear"></div>
-                <span class="forecastDay-Day">
-                  Mon
-                </span>
-                <div class="clear"></div>
-                <span class="forecastDay-Temp">
-                  36°
-                </span>
-                <div class="clear"></div>
-              </li>
-              <li class="forecastDay">
-                <i data-feather="cloud-off"></i>
-                <div class="clear"></div>
-                <span class="forecastDay-Day">
-                  Tue
-                </span>
-                <div class="clear"></div>
-                <span class="forecastDay-Temp">
-                  28°
-                </span>
-                <div class="clear"></div>
-              </li>
-
-              <li class="forecastDay">
-                <i data-feather="cloud-snow"></i>
-                <div class="clear"></div>
-                <span class="forecastDay-Day">
-                  Wed
-                </span>
-                <div class="clear"></div>
-                <span class="forecastDay-Temp">
-                  -4°
-                </span>
-                <div class="clear"></div>
-              </li>
-
-              <li class="forecastDay">
-                <i data-feather="cloud-rain"></i>
-                <div class="clear"></div>
-                <span class="forecastDay-Day">
-                  Thu
-                </span>
-                <div class="clear"></div>
-                <span class="forecastDay-Temp">
-                  32°
-                </span>
-                <div class="clear"></div>
-              </li>
-            </ul>
-          </div>
-          <div class="change-btn-container">
-            <button class="ChangeLocation" data-toggle="modal" data-target="#exampleModalCenter"><i class="pin"
-                data-feather="map-pin"></i>
-              Change Location </button>
-          </div>
+        <div class="LilInfoContainer">
+          <i class="WeatherIcon" data-feather="cloud"></i>
+          <span class="WeatherIcon"><img id="wicon" style="height:100px"></span>
+          <span class="MainDeg">29°</span>
+          <span class="Description">Scattered Clouds</span>
         </div>
+      </div>
+      <div class="navigation">
+        <a class="button" onclick="signOut();">
+          <img src="https://toppng.com/uploads/preview/logout-11551049168o9cg0mxxib.png" style="width: 25px; float: left;">
+
+          <div class="logout">LOGOUT</div>
+
+        </a>
 
       </div>
-
-      <div class="back">
-
-          <input type="text" class="input" placeholder="type city"></input>
-            
-        <div id="input_container">
-          <div class="in_C">
-            <span>Search</span>
-            <input id="cityInput" type="text" />
-          </div>
-          <button id="undo" class="doSearch"><i class="pin" data-feather="map-pin"></i>
-            Change Location </button>
-        </div>
-        <div class="recentSearches">
-          <span class="recentHr">Recent</span>
-          <ul class="recentList">
-            <li class="recentItem">Tabriz
-                   <i class="pin" data-feather="arrow-right"></i>
-            </li>
-            <li class="recentItem">London</li>
-            <li class="recentItem">Seattle</li>
-            <li class="recentItem">Amsterdam</li>
-            <li class="recentItem">tehran</li>
-
-
+      <div class="rightSideContainer">
+        <div class="moreInfoContainer">
+          <ul class="InfoList">
+            <li class="infoItem"><span>HUMIDITY</span><span class="value" id="humidity">34%</span></li>
+            <li class="infoItem"><span>WIND</span><span class="value" id="windSpeed">14km/h</span></li>
+            <li class="infoItem"><span>FEELS LIKE</span><span class="value" id="feelsLike">25°</span></li>
+            <li class="infoItem"><span>HIGHEST TEMP</span><span class="value" id="tempHigh">32°</span></li>
+            <li class="infoItem"><span>LOWEST TEMP</span><span class="value" id="tempMin">22°</span></li>
           </ul>
-
-
         </div>
+
+        <div class="forecastContainer">
+          <ul class="forecastDayList">
+            <li class="forecastDay">
+              <i data-feather="cloud-lightning"></i>
+              <div class="clear"></div>
+              <span class="forecastDay-Day">
+                Mon
+              </span>
+              <div class="clear"></div>
+              <span class="forecastDay-Temp">
+                36°
+              </span>
+              <div class="clear"></div>
+            </li>
+            <li class="forecastDay">
+              <i data-feather="cloud-off"></i>
+              <div class="clear"></div>
+              <span class="forecastDay-Day">
+                Tue
+              </span>
+              <div class="clear"></div>
+              <span class="forecastDay-Temp">
+                28°
+              </span>
+              <div class="clear"></div>
+            </li>
+
+            <li class="forecastDay">
+              <i data-feather="cloud-snow"></i>
+              <div class="clear"></div>
+              <span class="forecastDay-Day">
+                Wed
+              </span>
+              <div class="clear"></div>
+              <span class="forecastDay-Temp">
+                -4°
+              </span>
+              <div class="clear"></div>
+            </li>
+
+            <li class="forecastDay">
+              <i data-feather="cloud-rain"></i>
+              <div class="clear"></div>
+              <span class="forecastDay-Day">
+                Thu
+              </span>
+              <div class="clear"></div>
+              <span class="forecastDay-Temp">
+                32°
+              </span>
+              <div class="clear"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="change-btn-container">
+          <button class="ChangeLocation" data-toggle="modal" data-target="#exampleModalCenter"><i class="pin"
+              data-feather="map-pin"></i>
+            Change Location </button>
+            <button class="ChangeLocation" id="reportButton"><i class="pin"
+              data-feather="map-pin"></i> Take a look at Report </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="back">
+
+      <input type="text" class="input" placeholder="type city"></input>
+
+      <div id="input_container">
+        <div class="in_C">
+          <span>Search</span>
+          <input id="cityInput" type="text" />
+        </div>
+        <button id="undo" class="doSearch"><i class="pin" data-feather="map-pin"></i>
+          Location </button>
+      </div>
+      <div class="recentSearches">
+        <span class="recentHr">Recent</span>
+        <ul class="recentList">
+          <li class="recentItem">Tabriz
+            <i class="pin" data-feather="arrow-right"></i>
+          </li>
+          <li class="recentItem">London</li>
+          <li class="recentItem">Seattle</li>
+          <li class="recentItem">Amsterdam</li>
+          <li class="recentItem">tehran</li>
+
+
+        </ul>
+
 
       </div>
 
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="input">
-              <input type="text" placeholder="Enter the city" class="input_text">
-              <input type="submit" value="Submit" class="submit">
-            </div>
-          </div>
-        
-          <div class="container">
-            <div class="card">
-              <h1 class="name" id="name"></h1>
-              <p class="temp"></p>
-              <p class="clouds"></p>
-              <p class="desc"></p>
-            </div>
-          </div>
+  </div>
 
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="submitBut">Save changes</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add Your location</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input">
+            <input type="text" placeholder="Enter the city" class="input_text">
+            <input type="submit" value="Submit" class="submit">
           </div>
         </div>
+
+        <div class="container">
+          <div class="card">
+            <h1 class="name" id="name"></h1>
+            <p class="temp"></p>
+            <p class="clouds"></p>
+            <p class="desc"></p>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
-    <script src="app.js"></script>
-  </body>
+  </div>
+  </div>
+  <script src="app.js"></script>
 
-  </html>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+ https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+  document.getElementById('reportButton').onclick = function(){
+    location.href = "temp_graph.html";
+  }
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBTMQdySZWAU_NmqAqrhhoCOP-aqgLxXD8",
+      authDomain: "iotweather-206cf.firebaseapp.com",
+      projectId: "iotweather-206cf",
+      storageBucket: "iotweather-206cf.appspot.com",
+      messagingSenderId: "593826630200",
+      appId: "1:593826630200:web:54b81c950ed8b59bf6b4cd"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var bigOne = document.getElementById('bigOne');
+    var dbRef = firebase.database().ref().child('user');
+    var checkUser = localStorage.getItem('userEmail');
+    console.log(localStorage.getItem('userLocation'))
+    if (localStorage.getItem('userLocation') != null) {
+      document.querySelector('.location').innerHTML = localStorage.getItem('userLocation');
+    }
+    count = 0;
+    for (i = 0; i < checkUser.length; i++) {
+      if (checkUser[i] != '.') {
+        count = count + 1;
+      }
+      else {
+        count = count;
+      }
+    }
+
+    if (count == 0) {
+      name = checkUser.substring(0, checkUser.indexOf('@'));
+    }
+    else {
+      name = checkUser.substring(0, checkUser.indexOf('.'));
+    }
+
+    var name, userLocation;
+
+    function Ready() {
+      name = name;
+      userLocation = localStorage.getItem('userLocation');
+      console.log(userLocation);
+    }
+    //myStr.substring(0, myStr.indexOf('('))
+
+    Ready();
+    firebase.database().ref('user/' + name).set({
+      UserName: name,
+      UserLocation: userLocation
+    });
+    firebase.database().ref('user/' + name + "/" + '18:11:14').set({
+      temperature: 20,
+      humidity: 80
+    });
+
+    for (i = 10; i < 20; i++) {
+      firebase.database().ref('user/' + name + "/" + ' 10 Dec 2020  18:11:' + parseFloat(i)).set({
+        temperature: 20 + Math.floor(Math.random() * 10),
+        humidity: 80 + Math.floor(Math.random() * 10),
+      });
+    }
+
+    button.addEventListener('click', function (name) {
+      fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=3e380122f86b40178d1149643bd99d2f')
+        .then(response => response.json())
+        .then(data => {
+          var tempValue = data['main']['temp'];
+          var nameValue = data['name'];
+          var descValue = data['weather'][0]['description'];
+
+          main.innerHTML = nameValue;
+          desc.innerHTML = "Desc - " + descValue;
+          temp.innerHTML = "Temp - " + tempValue;
+          input.value = "";
+          console.log(data);
+
+          document.querySelector('.location').innerHTML = nameValue + ', ' + data['sys']['country'];
+          document.querySelector('.MainDeg').innerHTML = Math.round(data['main']['temp'] - 273.15) + '°';
+          document.querySelector('.Description').innerHTML = data['weather'][0]['description'];
+          document.querySelector('#humidity').innerHTML = data['main']['humidity'] + "%";
+          document.querySelector('#feelsLike').innerHTML = Math.round(data['main']['feels_like'] - 273.15) + '°';
+          document.querySelector('#tempHigh').innerHTML = Math.round(data['main']['temp_max'] - 273.15) + '°';
+          document.querySelector('#tempMin').innerHTML = Math.round(data['main']['temp_min'] - 273.15) + '°';
+          document.querySelector('#windSpeed').innerHTML = data['wind']['speed'] + "km/h";
+
+          iconcode = data['weather']['0']['icon'];
+          var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+          $('#wicon').attr('src', iconurl);
+
+          let unix_timestamp = data['dt'];
+          console.log(timeConverter(unix_timestamp));
+
+          document.querySelector('.date').innerHTML = timeConverter(unix_timestamp);
+
+          var bigOne = document.getElementById('bigOne');
+          var dbRef = firebase.database().ref().child('user');
+          var checkUser = localStorage.getItem('userEmail');
+          console.log("checkkk")
+          count = 0;
+          for (i = 0; i < checkUser.length; i++) {
+            if (checkUser[i] != '.') {
+              count = count + 1;
+            }
+            else {
+              count = count;
+            }
+          }
+
+          if (count == 0) {
+            name = checkUser.substring(0, checkUser.indexOf('@'));
+          }
+          else {
+            name = checkUser.substring(0, checkUser.indexOf('.'));
+          }
+          localStorage.setItem('userLocation', nameValue + ', ' + data['sys']['country'])
+
+          var name, userLocation;
+
+          function Ready() {
+            name = name;
+            userLocation = nameValue + ', ' + data['sys']['country'];
+            tempValue = Math.round(data['main']['temp'] - 273.15);
+            humidValue = data['main']['humidity'];
+            timestamp = timeConverter(unix_timestamp);
+
+          }
+          //myStr.substring(0, myStr.indexOf('('))
+
+          Ready();
+          firebase.database().ref('user/' + name).set({
+            UserName: name,
+            UserLocation: userLocation,
+          });
+
+          firebase.database().ref('user/' + name + "/" + timestamp).set({
+            temperature: tempValue,
+            humidity: humidValue
+          });
+
+        })
+
+
+
+    })
+  </script>
+</body>
+
+</html>

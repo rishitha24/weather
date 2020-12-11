@@ -1,0 +1,56 @@
+<<!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script src="main.js"></script>
+    </head>
+
+    <body>
+        <h1 id="bigOne"></h1>
+        <input id="name">
+        <button id="insert">Insert</button>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyBTMQdySZWAU_NmqAqrhhoCOP-aqgLxXD8",
+                authDomain: "iotweather-206cf.firebaseapp.com",
+                projectId: "iotweather-206cf",
+                storageBucket: "iotweather-206cf.appspot.com",
+                messagingSenderId: "593826630200",
+                appId: "1:593826630200:web:54b81c950ed8b59bf6b4cd"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            var bigOne = document.getElementById('bigOne');
+            var dbRef = firebase.database().ref().child('user');
+            
+
+            var name;
+
+            function Ready(){
+                name = document.getElementById('name').value;
+            }
+
+            document.getElementById('insert').onclick = function(){
+                Ready();
+                firebase.database().ref('user/'+name).set({
+                    UserName: name,
+                });
+            }
+        </script>
+    </body>
+
+    </html>
