@@ -13,20 +13,26 @@
 </head>
 
 <body style="color: white; margin-top: -1rem">
-    
-    <h5 style="color: rgb(119, 228, 213); text-align: center; text-decoration: underline">Actuators</h5>
+
+    <h6 style="color: rgb(119, 228, 213); text-align: center; text-decoration: underline; margin-top: 1rem">Actuators</h6>
+
+    <a href="temp_graph.html" style="font-size: 18px; margin-top: -6rem; margin-left: 15rem; color: blanchedalmond">Go
+        back to Report</a>
     <div style="margin-left: 1rem; margin-left: 20rem; margin-top: -2rem">
+
+        <br>
         <span style="font-size: 15px">0 -off</span>
         <span style="font-size: 15px">1 -on</span>
+
     </div>
-    <div style="margin-left: -6rem">
+    <div style="margin-left: -6rem; margin-top: -2rem">
         <label style="margin-left: 3rem; margin-top: -6rem"> <span style="font-size: 22px">Water Valve:</span> <input
                 class="bubble" id="waterBubble" type="checkbox" name="dummy" value="off" onclick="Ready()"></label>
 
         <label style="margin-left: 9rem; margin-top: -4.5rem"> <span style="font-size: 22px;">Light:</span> <input
-                class="bubble" id="lightBubble" type="checkbox" name="dummy" value="off"onclick="Ready()"></label>
+                class="bubble" id="lightBubble" type="checkbox" name="dummy" value="off" onclick="Ready()"></label>
         <label style="margin-left: 15rem; margin-top:-4.5rem;"> <span style="font-size: 22px; margin-left: -2rem">FireExtinguisher:</span>
-            <input class="bubble" id="co2Bubble" type="checkbox" name="dummy" value="off"onclick="Ready()"></label>
+            <input class="bubble" id="co2Bubble" type="checkbox" name="dummy" value="off" onclick="Ready()"></label>
     </div>
 
 </body>
@@ -105,12 +111,14 @@
         if ($("#co2Bubble").prop("checked") == true) {
 
             FireState = 1
+            console.log("111")
         } else {
             FireState = 0
         }
         if ($("#lightBubble").prop("checked") == true) {
 
             LightState = 1
+
         } else {
             LightState = 0
         }
@@ -121,12 +129,22 @@
             WaterState = 0
         }
 
-        firebase.database().ref('user/' + name + '/actuators/').set({
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = dd + mm + yyyy;
+        var d = new Date(); // for now
+        var Hours = d.getHours(); // => 9
+        var min = d.getMinutes(); // =>  30
+        var sec = d.getSeconds(); // => 51
+        firebase.database().ref('user/' + name + '/actuators/' + today + Hours +min +sec).set({
             WaterValve: WaterState,
             Light: LightState,
             Fire: FireState,
 
         });
+       
     }
 
     Ready();
@@ -134,7 +152,6 @@
         WaterValve: WaterState,
         Light: LightState,
         Fire: FireState,
-
     });
 
 </script>

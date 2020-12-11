@@ -13,9 +13,9 @@ body, input {
     white-space: nowrap;
 }
 body {
-	background: rgb(34, 31, 31);
+	background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 	display: grid;
-	height: 100vh;
+	height: 109vh;
 place-items: center;
 }
 label, .bubble {

@@ -120,8 +120,8 @@
           <button class="ChangeLocation" data-toggle="modal" data-target="#exampleModalCenter"><i class="pin"
               data-feather="map-pin"></i>
             Change Location </button>
-            <button class="ChangeLocation" id="reportButton"><i class="pin"
-              data-feather="map-pin"></i> Take a look at Report </button>
+          <button class="ChangeLocation" id="reportButton"><i class="pin" data-feather="map-pin"></i> Take a look at
+            Report </button>
         </div>
       </div>
 
@@ -204,9 +204,9 @@
  https://firebase.google.com/docs/web/setup#available-libraries -->
 
   <script>
-  document.getElementById('reportButton').onclick = function(){
-    location.href = "temp_graph.html";
-  }
+    document.getElementById('reportButton').onclick = function () {
+      location.href = "temp_graph.html";
+    }
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyBTMQdySZWAU_NmqAqrhhoCOP-aqgLxXD8",
@@ -347,8 +347,30 @@
           });
 
         })
+      var d = new Date();
+      var n = d.getDay();
 
-
+      if(n == 0){
+        document.querySelector('.day').innerHTML = "Sunday";
+      }
+      else if(n == 1){
+        document.querySelector('.day').innerHTML = "Monday";
+      }
+    else if(n == 2){
+      document.querySelector('.day').innerHTML = "Tuesday";
+    }
+    else if( n ==3 ){
+      document.querySelector('.day').innerHTML = "Wednesday";
+    }
+    else if(n == 4){
+      document.querySelector('.day').innerHTML = "Thursday";
+    }
+    else if(n == 5){
+      document.querySelector('.day').innerHTML = "Friday";
+    }
+    else if(n == 6){
+      document.querySelector('.day').innerHTML = "Saturday";
+    }
 
     })
   </script>
